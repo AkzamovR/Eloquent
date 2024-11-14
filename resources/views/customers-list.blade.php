@@ -13,30 +13,30 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <td>Numéro de commande</td>
-                            <td>Status</td>
-                            <td>Client</td>
-                            <td>Quantité</td>
-                            <td>#</td>
+                            <td>Numéro de client</td>
+                            <td>Nom du Client</td>
+                            <td>Nom du contact</td>
+                            <td>Prénom du contact</td>
+                            <td>Numéro de téléphone</td>
                         </tr>
                     </thead>
                     <tbody class="bg-white dark:bg-slate-800">
-                    @foreach($orders as $order)
+                    @foreach($customers as $customer)
                         <tr>
-                            <td>{{$order->orderNumber}}</td>
-                            <td>{{$order->status}}</td>
-                            <td>{{$order->customer->contactFirstName}} {{$order->customer->contactLastName}}</td>
-                            <td>({{sizeof($order->orderdetails)}})</td>
+                            <td>{{$customer->customerNumber}}</td>
+                            <td>{{$customer->customerName}}</td>
+                            <td>{{$customer->contactLastName}}</td>
+                            <td>{{$customer->contactFirstName}}</td>
+                            <td>{{$customer->phone}}</td>
                             <td>
-                                <a class="btn btn-primary" href="/orders/{{$order->orderNumber}}">Voir la page de détail</a>
+                                <a class="btn btn-primary" href="/customer/{{$customer->customerNumber}}">Voir la page de détail</a>
                             </td>
                         </tr>    
                     @endforeach
                     </tbody>
                 </table>
                 
-            </div><div class ="d-flex justify-content-center"> {{ $orders->links('pagination::bootstrap-4') }}</div>
-        </div>
-        
+            </div><div class ="d-flex justify-content-center"> {{ $customers->links('pagination::bootstrap-4') }}</div>
+        </div>    
     </body>
 </html>

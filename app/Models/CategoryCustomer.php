@@ -10,39 +10,35 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Payment
+ * Class CategoryCustomer
  * 
  * @property int $customerNumber
- * @property string $checkNumber
- * @property Carbon $paymentDate
- * @property float $amount
+ * @property int $category_id
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * 
  * @property Customer $customer
+ * @property Category $category
  *
  * @package App\Models
  */
-class Payment extends Model
+class CategoryCustomer extends Model
 {
-	protected $table = 'payments';
+	protected $table = 'category_customer';
 	public $incrementing = false;
-	public $timestamps = false;
 
 	protected $casts = [
 		'customerNumber' => 'int',
-		'paymentDate' => 'datetime',
-		'amount' => 'float',
-		'checkNumber' => 'string'
-	];
-
-	protected $fillable = [
-		'paymentDate',
-		'amount',
-		'checkNumber', 
-		'customerNumber'
+		'category_id' => 'int'
 	];
 
 	public function customer()
 	{
 		return $this->belongsTo(Customer::class, 'customerNumber');
+	}
+
+	public function category()
+	{
+		return $this->belongsTo(Category::class);
 	}
 }

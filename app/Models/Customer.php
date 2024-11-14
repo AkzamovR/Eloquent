@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property float|null $creditLimit
  * 
  * @property Employee|null $employee
+ * @property Collection|Category[] $categories
  * @property Collection|Order[] $orders
  * @property Collection|Payment[] $payments
  *
@@ -63,6 +64,12 @@ class Customer extends Model
 	public function employee()
 	{
 		return $this->belongsTo(Employee::class, 'salesRepEmployeeNumber');
+	}
+
+	public function categories()
+	{
+		return $this->belongsToMany(Category::class, 'category_customer', 'customerNumber')
+					->withTimestamps();
 	}
 
 	public function orders()

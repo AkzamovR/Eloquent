@@ -11,7 +11,7 @@
   </div>
   <div>
     <label for="status" class="block font-medium mb-1">Statut</label>
-        <select name="customerNumber" id="customerNumber" class="border rounded-md px-3 py-2 w-full">
+        <select name="status" id="status" class="border rounded-md px-3 py-2 w-full">
             <option value="Shipped">Shipped</option>
             <option value="Cancelled">Cancelled</option>
             <option value="Disputed">Disputed</option>
@@ -30,6 +30,14 @@
         <option value="{{$customer->customerNumber}}">{{$customer->contactLastName}} {{$customer->contactFirstName}}</option>
       @endforeach
     </select>
+  </div>
+  <div>
+    <label for="checkNumber" class="block font-medium mb-1">Commande Check</label>
+    <input type="text" name="checkNumber" id="checkNumber" class="border rounded-md px-3 py-2 w-full">
+  </div>
+  <div>
+    <label for="amount" class="block font-medium mb-1">Montant</label>
+    <input type="text" name="amount" id="amount" class="border rounded-md px-3 py-2 w-full">
   </div>
   <div>
     <input type="submit" value="Créer la commande" class="bg-blue-500 hover:bg-blue-600 text-white font-medium px-4 py-2 rounded-md">
